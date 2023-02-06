@@ -242,43 +242,14 @@ public class EmployeeBook {
         }
     }
     public void getNameEmployeesForEachDepartment () {
-        System.out.println("Отдел №1, имена сотрудников:");
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == 1){
-                System.out.println(employees[i].getName());
+        for (int j = 1; j < 6; j++) {
+            System.out.println("Отдел № " + j +", имена сотрудников:");
+            for (int i = 0; i < employees.length; i++) {
+                if (employees[i].getDepartment() == j) {
+                    System.out.println(employees[i].getName());
+                }
             }
         }
-        System.out.println();
-        System.out.println("Отдел №2, имена сотрудников:");
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == 2){
-                System.out.println(employees[i].getName());
-            }
-        }
-        System.out.println();
-        System.out.println("Отдел №3, имена сотрудников:");
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == 3){
-                System.out.println(employees[i].getName());
-            }
-
-        }
-        System.out.println();
-        System.out.println("Отдел №4, имена сотрудников:");
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == 4){
-                System.out.println(employees[i].getName());
-            }
-
-        }
-        System.out.println();
-        System.out.println("Отдел №5, имена сотрудников:");
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == 5){
-                System.out.println(employees[i].getName());
-            }
-        }
-
     }
 
 }
