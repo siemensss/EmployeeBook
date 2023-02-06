@@ -2,7 +2,7 @@ package coursework;
 
 public class Employee {
     private String name;
-    private int salary;
+    private double salary;
     private int department;
     private int id;
     private static int countId;
@@ -18,7 +18,7 @@ public class Employee {
         return name;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -30,7 +30,7 @@ public class Employee {
         return id;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
