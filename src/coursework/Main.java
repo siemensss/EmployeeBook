@@ -1,212 +1,9 @@
 package coursework;
 
 public class Main {
-    private static Employee[] employees = new Employee[10];
-
-
-    public static void getListOfAllEmployees() {
-        for (int i = 0; i < employees.length; i++) {
-            System.out.println(employees[i].toString());
-        }
-    }
-
-    public static double countSumOfSalaries() {
-        double sumOfSalaries = 0;
-        for (int i = 0; i < employees.length; i++) {
-            sumOfSalaries = sumOfSalaries + employees[i].getSalary();
-        }
-        return sumOfSalaries;
-    }
-
-    public static Employee findEmployeeWithMinSalary() {
-        double minSalary = employees[0].getSalary();
-        int i = 0;
-        for (; i < employees.length; i++) {
-            if (employees[i].getSalary() < minSalary) {
-                minSalary = employees[i].getSalary();
-            }
-        }
-        i = 0;
-        while (i < employees.length) {
-            if (minSalary == employees[i].getSalary()) {
-                break;
-            }
-            i++;
-        }
-        return employees[i];
-    }
-
-    public static Employee findEmployeeWithMaxSalary() {
-        double maxSalary = employees[0].getSalary();
-        int i = 0;
-        for (; i < employees.length; i++) {
-            if (employees[i].getSalary() > maxSalary) {
-                maxSalary = employees[i].getSalary();
-            }
-        }
-        i = 0;
-        while (i < employees.length) {
-            if (maxSalary == employees[i].getSalary()) {
-                break;
-            }
-            i++;
-        }
-        return employees[i];
-    }
-
-    public static double countAverageSalary() {
-        double sumOfSalaries = 0;
-        for (int i = 0; i < employees.length; i++) {
-            sumOfSalaries = sumOfSalaries + employees[i].getSalary();
-        }
-        return sumOfSalaries / employees.length;
-    }
-
-    public static void getNameOfAllEmployees() {
-        for (int i = 0; i < employees.length; i++) {
-            System.out.println("Сотрудник " + (i + 1) + ": " + employees[i].getName());
-        }
-    }
-
-    public static void printSeparator() {
-        System.out.println("=======================");
-    }
-
-    public static void increaseSalary(double percent) {
-        percent = percent / 100;
-        double totalSalary = 0;
-        for (int i = 0; i < employees.length; i++) {
-            totalSalary = employees[i].getSalary() + (employees[i].getSalary() * percent);
-            employees[i].setSalary(totalSalary);
-        }
-    }
-
-    public static Employee getEmployeeWithMinSalaryInSpecificDepartment(int department) {
-        int j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                j++;
-            }
-        }
-        Employee[] employeesSameDepartment = new Employee[j];
-        j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                employeesSameDepartment[j] = employees[i];
-                j++;
-            }
-        }
-        j = 0;
-        double minSalary = employeesSameDepartment[j].getSalary();
-        while (j < employeesSameDepartment.length) {
-            if (employeesSameDepartment[j].getSalary() < minSalary) {
-                minSalary = employeesSameDepartment[j].getSalary();
-            }
-            j++;
-        }
-        j = 0;
-        while (j < employeesSameDepartment.length) {
-            if (minSalary == employeesSameDepartment[j].getSalary()) {
-                break;
-            }
-            j++;
-        }
-
-        return employeesSameDepartment[j];
-    }
-
-    public static Employee getEmployeeWithMaxSalaryInSpecificDepartment(int department) {
-        int j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                j++;
-            }
-        }
-        Employee[] employeesSameDepartment = new Employee[j];
-        j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                employeesSameDepartment[j] = employees[i];
-                j++;
-            }
-        }
-        j = 0;
-        double maxSalary = employeesSameDepartment[j].getSalary();
-        while (j < employeesSameDepartment.length) {
-            if (employeesSameDepartment[j].getSalary() > maxSalary) {
-                maxSalary = employeesSameDepartment[j].getSalary();
-            }
-            j++;
-        }
-        j = 0;
-        while (j < employeesSameDepartment.length) {
-            if (maxSalary == employeesSameDepartment[j].getSalary()) {
-                break;
-            }
-            j++;
-        }
-
-        return employeesSameDepartment[j];
-    }
-
-    public static double countSumOfSalariesInSpecificDepartment(int department) {
-        double sumOfSalaries = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                sumOfSalaries = sumOfSalaries + employees[i].getSalary();
-            }
-        }
-        return sumOfSalaries;
-    }
-
-    public static double countAverageSalaryInSpecificDepartment(int department) {
-        double sumOfSalaries = 0;
-        int j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                sumOfSalaries = sumOfSalaries + employees[i].getSalary();
-                j++;
-            }
-        }
-        return sumOfSalaries / j;
-    }
-
-    public static void increaseSalaryInSpecificDepartment(int department, double percent) {
-        percent = percent / 100;
-        double totalSalary = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                totalSalary = employees[i].getSalary() + (employees[i].getSalary() * percent);
-                employees[i].setSalary(totalSalary);
-            }
-        }
-    }
-
-    public static void getInformationAboutAllEmployeesInSpecificDepartment(int department) {
-        int j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getDepartment() == department) {
-                System.out.println("--------------------\n" + (j + 1)+". Сотрудник с id: " +employees[i].getId() + "\nФ.И.О.: " + employees[i].getName() + "\nЗарплата: " + employees[i].getSalary() + "\n--------------------");
-                j++;
-            }
-        }
-    }
-    public static void getAllEmployeesWithSalaryLessThenLimit (double salaryLimit){
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() < salaryLimit) {
-                System.out.println("--------------------\n" + "Сотрудник с id: " +employees[i].getId() + "\nФ.И.О.: " + employees[i].getName() + "\nЗарплата: " + employees[i].getSalary() + "\n--------------------");
-            }
-        }
-    }
-    public static void getAllEmployeesWithSalaryGreaterThenLimit (double salaryLimit){
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i].getSalary() >= salaryLimit) {
-                System.out.println("--------------------\n" + "Сотрудник с id: " +employees[i].getId() + "\nФ.И.О.: " + employees[i].getName() + "\nЗарплата: " + employees[i].getSalary() + "\n--------------------");
-            }
-        }
-    }
 
     public static void main(String[] args) {
+        Employee[] employees = new Employee[10];
         employees[0] = new Employee("Филатов Игорь Михайлович", 44200, 2);
         employees[1] = new Employee("Петров Иван Алексеевич", 38500, 4);
         employees[2] = new Employee("Козлов Александр Иванович", 53100, 1);
@@ -217,40 +14,52 @@ public class Main {
         employees[7] = new Employee("Шаров Алан Максимович", 47900, 4);
         employees[8] = new Employee("Якушев Ипполит Егорович", 58200, 1);
         employees[9] = new Employee("Марков Юстин Матвеевич", 62150, 2);
-        printSeparator();
+        EmployeeBook book = new EmployeeBook(employees);
+        book.printSeparator();
         System.out.println("Список всех сотрудников:");
-        getListOfAllEmployees();
-        printSeparator();
-        System.out.println("Сумма всех зарплат: " + countSumOfSalaries());
-        printSeparator();
-        System.out.println("Сотрудник с минимальной зарплатой:\n" + findEmployeeWithMinSalary().toString());
-        printSeparator();
-        System.out.println("Сотрудник с максимальной зарплатой:\n" + findEmployeeWithMaxSalary().toString());
-        printSeparator();
-        System.out.println("Средняя зарплата: " + countAverageSalary());
-        printSeparator();
+        book.getListOfAllEmployees();
+        book.printSeparator();
+        System.out.println("Сумма всех зарплат: " + book.countSumOfSalaries());
+        book.printSeparator();
+        System.out.println("Сотрудник с минимальной зарплатой:\n" + book.findEmployeeWithMinSalary().toString());
+        book.printSeparator();
+        System.out.println("Сотрудник с максимальной зарплатой:\n" + book.findEmployeeWithMaxSalary().toString());
+        book.printSeparator();
+        System.out.println("Средняя зарплата: " + book.countAverageSalary());
+        book.printSeparator();
         System.out.println("Имена всех сотрудников: ");
-        getNameOfAllEmployees();
-        printSeparator();
+        book.getNameOfAllEmployees();
+        book.printSeparator();
         int department = 2;
-        System.out.println("Сотрудник с минимальной зарплатой в отделе № " + department + ":\n" + getEmployeeWithMinSalaryInSpecificDepartment(department).toString());
-        printSeparator();
-        System.out.println("Сотрудник с максимальной зарплатой в отделе № " + department + ":\n" + getEmployeeWithMaxSalaryInSpecificDepartment(department).toString());
-        printSeparator();
-        System.out.println("Сумма всех зарплат по отделу № " + department + ": " + countSumOfSalariesInSpecificDepartment(department));
-        printSeparator();
-        System.out.println("Средняя зарплата по отделу № " + department + ": " + countAverageSalaryInSpecificDepartment(department));
-        printSeparator();
+        System.out.println("Сотрудник с минимальной зарплатой в отделе № " + department + ":\n" + book.getEmployeeWithMinSalaryInSpecificDepartment(department).toString());
+        book.printSeparator();
+        System.out.println("Сотрудник с максимальной зарплатой в отделе № " + department + ":\n" + book.getEmployeeWithMaxSalaryInSpecificDepartment(department).toString());
+        book.printSeparator();
+        System.out.println("Сумма всех зарплат по отделу № " + department + ": " + book.countSumOfSalariesInSpecificDepartment(department));
+        book.printSeparator();
+        System.out.println("Средняя зарплата по отделу № " + department + ": " + book.countAverageSalaryInSpecificDepartment(department));
+        book.printSeparator();
         System.out.println("Информация о сотрудниках из отдела № " + department + ":");
-        getInformationAboutAllEmployeesInSpecificDepartment(department);
-        printSeparator();
+        book.getInformationAboutAllEmployeesInSpecificDepartment(department);
+        book.printSeparator();
         double limit = 50000;
         System.out.println("Список сотрудников с зарплатой меньше заданного числа (" + limit + "):");
-        getAllEmployeesWithSalaryLessThenLimit(limit);
-        printSeparator();
+        book.getAllEmployeesWithSalaryLessThenLimit(limit);
+        book.printSeparator();
         System.out.println("Список сотрудников с зарплатой больше (или равно) заданного числа (" + limit + "):");
-        getAllEmployeesWithSalaryGreaterThenLimit(limit);
-        printSeparator();
+        book.getAllEmployeesWithSalaryGreaterThenLimit(limit);
+        book.printSeparator();
+        book.deleteEmployee("Фомин Максимилиан Игоревич",7);
+        Employee employee = new Employee("Степанов Оскар Федотович", 40000, 5);
+        book.addEmployee(employee);
+        System.out.println("Список всех сотрудников:");
+        book.getListOfAllEmployees();
+        book.printSeparator();
+        book.editEmployee("Востриков Илья Владимирович", 2, 100000);
+        book.getListOfAllEmployees();
+        book.printSeparator();
+        book.getNameEmployeesForEachDepartment();
+
     }
 
 }
