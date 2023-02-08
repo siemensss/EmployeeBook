@@ -16,6 +16,7 @@ public class Main {
         employees[9] = new Employee("Марков Юстин Матвеевич", 62150, 2);
         EmployeeBook book = new EmployeeBook(employees);
         book.printSeparator();
+        book.deleteEmployeeById(4);
         System.out.println("Список всех сотрудников:");
         book.getListOfAllEmployees();
         book.printSeparator();
@@ -49,13 +50,14 @@ public class Main {
         System.out.println("Список сотрудников с зарплатой больше (или равно) заданного числа (" + limit + "):");
         book.getAllEmployeesWithSalaryGreaterThenLimit(limit);
         book.printSeparator();
-        book.deleteEmployee("Фомин Максимилиан Игоревич",7);
         Employee employee = new Employee("Степанов Оскар Федотович", 40000, 5);
+        book.deleteEmployeeById(9);
         book.addEmployee(employee);
         System.out.println("Список всех сотрудников:");
         book.getListOfAllEmployees();
         book.printSeparator();
-        book.editEmployee("Востриков Илья Владимирович", 2, 100000);
+        book.editEmployeeSalary("Востриков Илья Владимирович", 100000);
+        book.editEmployeeDepartment("Востриков Илья Владимирович", 5);
         book.getListOfAllEmployees();
         book.printSeparator();
         book.getNameEmployeesForEachDepartment();
