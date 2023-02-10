@@ -30,45 +30,33 @@ public class EmployeeBook {
     }
 
     public Employee findEmployeeWithMinSalary() {
+        Employee e = null;
         double minSalary = employees[0].getSalary();
         int i = 0;
         for (; i < employees.length; i++) {
             if (employees[i] != null) {
                 if (employees[i].getSalary() < minSalary) {
                     minSalary = employees[i].getSalary();
+                    e = employees[i];
                 }
             }
         }
-        i = 0;
-        for (; i < employees.length; i++) {
-            if (employees[i] != null) {
-                if (minSalary == employees[i].getSalary()) {
-                    break;
-                }
-            }
-        }
-        return employees[i];
+        return e;
     }
 
     public Employee findEmployeeWithMaxSalary() {
+        Employee e = null;
         double maxSalary = employees[0].getSalary();
         int i = 0;
         for (; i < employees.length; i++) {
             if (employees[i] != null) {
                 if (employees[i].getSalary() > maxSalary) {
                     maxSalary = employees[i].getSalary();
+                    e = employees[i];
                 }
             }
         }
-        i = 0;
-        for (; i < employees.length; i++) {
-            if (employees[i] != null) {
-                if (maxSalary == employees[i].getSalary()) {
-                    break;
-                }
-            }
-        }
-        return employees[i];
+        return e;
     }
 
     public double countAverageSalary() {
@@ -105,75 +93,39 @@ public class EmployeeBook {
     }
 
     public Employee getEmployeeWithMinSalaryInSpecificDepartment(int department) {
-        int j = 0;
+        Employee e = null;
+        double minSalary = Double.MAX_VALUE;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
-                if (employees[i].getDepartment() == department) {
-                    j++;
+                if (employees[i].getSalary() < minSalary && employees[i].getDepartment() == department) {
+                    minSalary = employees[i].getSalary();
+                    e = employees[i];
                 }
             }
         }
-        Employee[] employeesSameDepartment = new Employee[j];
-        j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                if (employees[i].getDepartment() == department) {
-                    employeesSameDepartment[j] = employees[i];
-                    j++;
-                }
-            }
-        }
-        j = 0;
-        double minSalary = employeesSameDepartment[j].getSalary();
-        for (; j < employeesSameDepartment.length; j++) {
-            if (employeesSameDepartment[j].getSalary() < minSalary) {
-                minSalary = employeesSameDepartment[j].getSalary();
-            }
-        }
-        j = 0;
-        for (; j < employeesSameDepartment.length; j++) {
-            if (minSalary == employeesSameDepartment[j].getSalary()) {
-                break;
-            }
+        if(e == null) {
+            throw new RuntimeException("В отделе нет сотрудников!");
         }
 
-        return employeesSameDepartment[j];
+        return e;
     }
 
     public Employee getEmployeeWithMaxSalaryInSpecificDepartment(int department) {
-        int j = 0;
+        Employee e = null;
+        double maxSalary = Double.MIN_VALUE;
         for (int i = 0; i < employees.length; i++) {
             if (employees[i] != null) {
-                if (employees[i].getDepartment() == department) {
-                    j++;
+                if (employees[i].getSalary() > maxSalary && employees[i].getDepartment() == department) {
+                    maxSalary = employees[i].getSalary();
+                    e = employees[i];
                 }
             }
         }
-        Employee[] employeesSameDepartment = new Employee[j];
-        j = 0;
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] != null) {
-                if (employees[i].getDepartment() == department) {
-                    employeesSameDepartment[j] = employees[i];
-                    j++;
-                }
-            }
-        }
-        j = 0;
-        double maxSalary = employeesSameDepartment[j].getSalary();
-        for (; j < employeesSameDepartment.length; j++) {
-            if (employeesSameDepartment[j].getSalary() < maxSalary) {
-                maxSalary = employeesSameDepartment[j].getSalary();
-            }
-        }
-        j = 0;
-        for (; j < employeesSameDepartment.length; j++) {
-            if (maxSalary == employeesSameDepartment[j].getSalary()) {
-                break;
-            }
+        if(e == null) {
+            throw new RuntimeException("В отделе нет сотрудников!");
         }
 
-        return employeesSameDepartment[j];
+        return e;
     }
 
 
